@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.marsestates.R
 import com.example.marsestates.databinding.GridViewItemBinding
 import com.example.marsestates.network.MarsProperty
 
@@ -23,9 +24,14 @@ class PhotoGridAdapter(private val onClickListener: OnClickListener) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(marsProperty: MarsProperty) {
             binding.property = marsProperty
+            when(marsProperty.isRental) {
+                true -> itemView.setBackgroundResource(R.drawable.for_rent_border)
+                false -> itemView.setBackgroundResource(R.drawable.for_sale_border)
+            }
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()
+            itemView.setPadding(20, 20, 20, 20)
         }
     }
 

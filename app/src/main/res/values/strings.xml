@@ -10,4 +10,5 @@
     <string name="display_price">£%,.0f</string>
     <string name="estate_photo">Estate\'s representative image</string>
     <string name="property_photo">Property\'s gridView photo</string>
+    <string name="specific_remote_photo">Specific remote photo</string>
 </resources>

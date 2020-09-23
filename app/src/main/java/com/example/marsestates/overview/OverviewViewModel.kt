@@ -1,8 +1,6 @@
 package com.example.marsestates.overview
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.example.marsestates.network.MarsApi
 import com.example.marsestates.network.MarsApiFilter
 import com.example.marsestates.network.MarsProperty
@@ -12,7 +10,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 enum class MarsApiStatus { LOADING, ERROR, DONE }
-
 /**
  * The [ViewModel] that is attached to the [OverviewFragment].
  */
@@ -39,7 +36,6 @@ class OverviewViewModel : ViewModel() {
     // The external immutable LiveData for the navigation property
     val navigateToSelectedProperty: LiveData<MarsProperty>
         get() = _navigateToSelectedProperty
-
 
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
@@ -100,7 +96,6 @@ class OverviewViewModel : ViewModel() {
     fun updateFilter(filter: MarsApiFilter) {
         getMarsRealEstateProperties(filter)
     }
-
 
     /**
      * When the [ViewModel] is finished, we cancel our coroutine [viewModelJob], which tells the
